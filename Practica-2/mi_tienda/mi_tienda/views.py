@@ -1,5 +1,6 @@
 from django.http import HttpResponse
 from django.template import Template, Context
+from datetime import datetime
 
 def mi_funcion(request):
 	html = "Hola! Mi primera UrL!!"
@@ -27,9 +28,15 @@ def saludo(request):
     # --Procesar la plantilla
     t = Template(PLANTILLA)
 
-    # -- Crear el contexto: Nombre de usuario real 
+    # -- Crear el contexto: Nombre de usuario real
     c = Context({'user':'Epic Saxo guy'})
 
     # -- Obtener la pagina html final
     html = t.render(c)
     return HttpResponse(html)
+
+def hora_actual(request):
+	now = datetime.now()
+	html = "Son las %s." % now
+
+	return HttpResponse(html)
