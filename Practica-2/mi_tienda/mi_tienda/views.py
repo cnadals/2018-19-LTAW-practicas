@@ -1,6 +1,8 @@
 from django.http import HttpResponse
 from django.template import Template, Context
-from datetime import datetime
+from datetime import datetime, timedelta
+from django.template.loader import get_template
+from django.shortcuts import render
 
 def mi_funcion(request):
 	html = "Hola! Mi primera UrL!!"
@@ -40,3 +42,13 @@ def hora_actual(request):
 	html = "Son las %s." % now
 
 	return HttpResponse(html)
+
+def dentro_de(request, offset):
+	offset = int(offset)
+	dt = datetime.now() + timedelta(hours=offset)
+	html = "En %i hora(s), seran las %s." % (offset,dt)
+
+	return HttpResponse(html)
+
+def index(request):
+    return render(request, 'main.html', {'user':'Carmen'})

@@ -18,11 +18,15 @@ from mi_tienda.views import mi_funcion
 from mi_tienda.views import mi_producto
 from mi_tienda.views import saludo
 from mi_tienda.views import hora_actual
+from mi_tienda.views import dentro_de
+from mi_tienda.views import index
 
 urlpatterns = [
     url(r'^producto/(\d{1,2})/$', mi_producto),
     url(r'^saludo/', saludo),
     url(r'^hola/', mi_funcion),
     url(r'^time/$', hora_actual),
+    url(r'^time/plus/(\d{1,2})/$', dentro_de),
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^main/', index),
 ]
